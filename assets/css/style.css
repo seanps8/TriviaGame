@@ -1,0 +1,43 @@
+body{
+    background-image: url("../images/Park.jpg");
+}
+#container{
+    background-color: rgb(235, 113, 113);
+    width: 960px;
+    margin: 0;
+    position: absolute;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+#natsTrivia{
+    font-size: 40px;
+    background-color: rgb(32, 32, 179);
+    color: white;
+    padding: 3px;
+    text-align: center;
+    margin-top: 20px;
+}
+.question{
+    text-align: center;
+    font-size: 20px;
+}
+.answers{
+    text-align: center;
+    font-size: 12px;
+}
+#time{
+    text-align: center;
+    font-size: 20px;
+}
+#done{
+    font-size: 20px;
+    text-align: center;
+    padding: 15px;
+}
+#done:hover{
+    background-color: rgb(32, 32, 179);
+    color: white;
+}
