@@ -6,72 +6,164 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Nationals Trivia!</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="assets/javascript/app.js" type="text/javascript"></script>
 </head>
 <body>
     <div id="container">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
         <header id="natsTrivia">Nationals Trivia Game!</header>
 
-        <div id="time">Time Remaining: </div>
+        <div id="time">Time Remaining:</div>
         <p class="question">Who has the most walk off Home Runs in Nationals History?
-            <div class="answers">
-                <input type="radio" id="Adam" value="Adam Dunn">Adam Dunn
-                <input type="radio" id="Bryce" value="Bryce Harper">Bryce Harper
-                <input type="radio" id="Rendon" value="Anthony Rendon">Anthony Rendon
-                <input type="radio" id="Ryan" value="Ryan Zimmerman">Ryan Zimmerman
-            </div>
+            <form class="answers">
+                <input type="radio" class="wrong" name="option" value="Adam Dunn">Adam Dunn
+                <input type="radio" class="wrong" name="option" value="Bryce Harper">Bryce Harper
+                <input type="radio" class="wrong" name="option" value="Anthony Rendon">Anthony Rendon
+                <input type="radio" id="Ryan" name="option" value="Ryan Zimmerman">Ryan Zimmerman
+            </form>
         </p>
 
         <p class="question">What is the name of the Nationals mascot?
-            <div class="answers">
-                <input type="radio" id="Screech" value="Screech">Screech
-                <input type="radio" id="Slapshot" value="Slapshot">Slapshot
-                <input type="radio" id="Fanatic" value="Fanatic">Fanatic
-                <input type="radio" id="Nats" value="Nats">Nats
-            </div>
+            <form class="answers">
+                <input type="radio" id="Screech" name="option1" value="Screech">Screech
+                <input type="radio" class="wrong" name="option1" value="Slapshot">Slapshot
+                <input type="radio" class="wrong" name="option1" value="Fanatic">Fanatic
+                <input type="radio" class="wrong" name="option1" value="Nats">Nats
+            </form>
         </p>
 
         <p class="question">When was the last year the Nationals were in the playoffs?
-            <div class="answers">
-                <input type="radio" id="2015" value="2015">2015
-                <input type="radio" id="2016" value="2016">2016
-                <input type="radio" id="2017" value="2017">2017
-                <input type="radio" id="2014" value="2014">2014
-            </div>
+            <form class="answers">
+                <input type="radio" class="wrong" name="option2" value="2015">2015
+                <input type="radio" class="wrong" name="option2" value="2016">2016
+                <input type="radio" id="2017" name="option2" value="2017">2017
+                <input type="radio" class="wrong" name="option2" value="2014">2014
+            </form>
         </p>
 
         <p class="question">Who is the Nationals General Manager in the front office?
-            <div class="answers">
-                <input type="radio" id="Ted" value="Ted Lerner">Ted Lerner
-                <input type="radio" id="Mike" value="Mike Rizzo">Mike Rizzo
-                <input type="radio" id="John" value="John Smith">John Smith
-                <input type="radio" id="Dusty" value="Dusty Baker">Dusty Baker
-            </div>
+            <form class="answers">
+                <input type="radio" class="wrong" name="option3" value="Ted Lerner">Ted Lerner
+                <input type="radio" id="Mike" name="option3" value="Mike Rizzo">Mike Rizzo
+                <input type="radio" class="wrong" name="option3" value="John Smith">John Smith
+                <input type="radio" class="wrong" name="option3" value="Dusty Baker">Dusty Baker
+            </form>
         </p>
 
         <p class="question">Who pitches second in the Nationals starting pitching rotation?
-            <div class="answers">
-                <input type="radio" id="Max" value="Max Scherzer">Max Scherzer
-                <input type="radio" id="Tanner" value="Tanner Roark">Tanner Roark
-                <input type="radio" id="Eric" value="Eric Fedde">Eric Fedde
-                <input type="radio" id="Stephen" value="Stephen Strasburg">Stephen Strasburg
-            </div>
+            <form class="answers">
+                <input type="radio" class="wrong" name="option4" value="Max Scherzer">Max Scherzer
+                <input type="radio" class="wrong" name="option4" value="Tanner Roark">Tanner Roark
+                <input type="radio" class="wrong" name="option4" value="Eric Fedde">Eric Fedde
+                <input type="radio" id="Steve" name="option4" value="Stephen Strasburg">Stephen Strasburg
+            </form>
         </p>
 
         <p class="question">Who is the best team in the NL East?
-            <div class="answers">
-                <input type="radio" id="Nationals" value="Nationals">Nationals
-                <input type="radio" id="Braves" value="Braves">Braves
-                <input type="radio" id="Phils" value="Phillies">Phillies
-                <input type="radio" id="Marlins" value="Marlins">Marlins
-            </div>
+            <form class="answers">
+                <input type="radio" id="Nats" name="option5" value="Nationals">Nationals
+                <input type="radio" class="wrong" name="option5" value="Braves">Braves
+                <input type="radio" class="wrong" name="option5" value="Phillies">Phillies
+                <input type="radio" class="wrong" name="option5" value="Marlins">Marlins
+            </form>
         </p>
 
         <p id="done">DONE!</p>
 
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() { 
+    
+
+    var correct = 0;
+    var incorrect = 0;
+    var unanswered = 0;
+
+    var timeLeft = 30;
+    var timerId = setInterval(countdown, 1000);
+    var elem = document.getElementById("time");
+
+    var zim = document.getElementById("Ryan");
+    var bird = document.getElementById("Screech");
+    var year = document.getElementById("2017");
+    var gm = document.getElementById("Mike");
+    var pitch = document.getElementById("Steve");
+    var team = document.getElementById("Nats");
+
+    var all = document.getElementsByTagName("input");
+    
+    function countdown() {
+
+      if (timeLeft === 0) {
+        clearTimeout(timerId);
+        Timesup();
+      } else {
+        elem.innerHTML = "Time Remaining: " + timeLeft;
+        timeLeft--;
+      }
+      console.log(timeLeft);
+    };
+
+    function results() {
+    
+    if (zim.checked) {
+        correct++;
+    } else {
+        incorrect++;
+    };
+
+    if (bird.checked) {
+        correct++;
+    } else {
+        incorrect++;
+    };
+
+    if (year.checked) {
+        correct++;
+    } else {
+        incorrect++;
+    };
+
+    if (gm.checked) {
+        correct++;
+    } else {
+        incorrect++;
+    };
+
+    if (pitch.checked) {
+        correct++;
+    } else {
+        incorrect++;
+    };
+
+    if (team.checked) {
+        correct++;
+    } else {
+        incorrect++;
+    };
+
+
+
+    };
+   
+    function Timesup() {
+        var timeup = "<h1 class='text-center'>Nationals Trivia Game!</h1><p>Correct: " + correct + "</p>" + "<p>Incorrect: " + incorrect + "</p>" + "<p>Unanswered: " + unanswered + "</p>";
+        $("#container").html(timeup);
+    };
+
+    $("#done").on("click", function () {
+        results();
+        console.log(correct);
+        console.log(incorrect);
+        console.log(unanswered);
+        Timesup();
+    });
+
+    });
+
+</script>
 </body>
 </html>
