@@ -17,9 +17,9 @@
         <div id="time">Time Remaining:</div>
         <p class="question">Who has the most walk off Home Runs in Nationals History?
             <form class="answers">
-                <input type="radio" class="wrong" name="option" value="Adam Dunn">Adam Dunn
-                <input type="radio" class="wrong" name="option" value="Bryce Harper">Bryce Harper
-                <input type="radio" class="wrong" name="option" value="Anthony Rendon">Anthony Rendon
+                <input type="radio" class="one" name="option" value="Adam Dunn">Adam Dunn
+                <input type="radio" class="one" name="option" value="Bryce Harper">Bryce Harper
+                <input type="radio" class="one" name="option" value="Anthony Rendon">Anthony Rendon
                 <input type="radio" id="Ryan" name="option" value="Ryan Zimmerman">Ryan Zimmerman
             </form>
         </p>
@@ -27,35 +27,35 @@
         <p class="question">What is the name of the Nationals mascot?
             <form class="answers">
                 <input type="radio" id="Screech" name="option1" value="Screech">Screech
-                <input type="radio" class="wrong" name="option1" value="Slapshot">Slapshot
-                <input type="radio" class="wrong" name="option1" value="Fanatic">Fanatic
-                <input type="radio" class="wrong" name="option1" value="Nats">Nats
+                <input type="radio" class="two" name="option1" value="Slapshot">Slapshot
+                <input type="radio" class="two" name="option1" value="Fanatic">Fanatic
+                <input type="radio" class="two" name="option1" value="Nats">Nats
             </form>
         </p>
 
         <p class="question">When was the last year the Nationals were in the playoffs?
             <form class="answers">
-                <input type="radio" class="wrong" name="option2" value="2015">2015
-                <input type="radio" class="wrong" name="option2" value="2016">2016
+                <input type="radio" class="three" name="option2" value="2015">2015
+                <input type="radio" class="three" name="option2" value="2016">2016
                 <input type="radio" id="2017" name="option2" value="2017">2017
-                <input type="radio" class="wrong" name="option2" value="2014">2014
+                <input type="radio" class="three" name="option2" value="2014">2014
             </form>
         </p>
 
         <p class="question">Who is the Nationals General Manager in the front office?
             <form class="answers">
-                <input type="radio" class="wrong" name="option3" value="Ted Lerner">Ted Lerner
+                <input type="radio" class="four" name="option3" value="Ted Lerner">Ted Lerner
                 <input type="radio" id="Mike" name="option3" value="Mike Rizzo">Mike Rizzo
-                <input type="radio" class="wrong" name="option3" value="John Smith">John Smith
-                <input type="radio" class="wrong" name="option3" value="Dusty Baker">Dusty Baker
+                <input type="radio" class="four" name="option3" value="John Smith">John Smith
+                <input type="radio" class="four" name="option3" value="Dusty Baker">Dusty Baker
             </form>
         </p>
 
         <p class="question">Who pitches second in the Nationals starting pitching rotation?
             <form class="answers">
-                <input type="radio" class="wrong" name="option4" value="Max Scherzer">Max Scherzer
-                <input type="radio" class="wrong" name="option4" value="Tanner Roark">Tanner Roark
-                <input type="radio" class="wrong" name="option4" value="Eric Fedde">Eric Fedde
+                <input type="radio" class="five" name="option4" value="Max Scherzer">Max Scherzer
+                <input type="radio" class="five" name="option4" value="Tanner Roark">Tanner Roark
+                <input type="radio" class="five" name="option4" value="Eric Fedde">Eric Fedde
                 <input type="radio" id="Steve" name="option4" value="Stephen Strasburg">Stephen Strasburg
             </form>
         </p>
@@ -63,9 +63,9 @@
         <p class="question">Who is the best team in the NL East?
             <form class="answers">
                 <input type="radio" id="Nats" name="option5" value="Nationals">Nationals
-                <input type="radio" class="wrong" name="option5" value="Braves">Braves
-                <input type="radio" class="wrong" name="option5" value="Phillies">Phillies
-                <input type="radio" class="wrong" name="option5" value="Marlins">Marlins
+                <input type="radio" class="six" name="option5" value="Braves">Braves
+                <input type="radio" class="six" name="option5" value="Phillies">Phillies
+                <input type="radio" class="six" name="option5" value="Marlins">Marlins
             </form>
         </p>
 
@@ -93,12 +93,18 @@
     var pitch = document.getElementById("Steve");
     var team = document.getElementById("Nats");
 
-    var all = document.getElementsByTagName("input");
+    var uno = document.getElementsByClassName("one");
+    var dos = document.getElementsByClassName("two");
+    var tres = document.getElementsByClassName("three");
+    var quatro = document.getElementsByClassName("four");
+    var cinco = document.getElementsByClassName("five");
+    var seis = document.getElementsByClassName("six");
     
     function countdown() {
 
       if (timeLeft === 0) {
         clearTimeout(timerId);
+        results();
         Timesup();
       } else {
         elem.innerHTML = "Time Remaining: " + timeLeft;
@@ -109,43 +115,44 @@
 
     function results() {
     
-    if (zim.checked) {
-        correct++;
-    } else {
+    if (!zim.checked) {
+        if (!uno.checked) {
+            unanswered++;
+        }
         incorrect++;
+    } else {
+        correct++;
     };
 
-    if (bird.checked) {
-        correct++;
-    } else {
-        incorrect++;
-    };
+    // if (bird.checked) {
+    //     correct++;
+    // } else {
+    //     incorrect++;
+    // };
 
-    if (year.checked) {
-        correct++;
-    } else {
-        incorrect++;
-    };
+    // if (year.checked) {
+    //     correct++;
+    // } else {
+    //     incorrect++;
+    // };
 
-    if (gm.checked) {
-        correct++;
-    } else {
-        incorrect++;
-    };
+    // if (gm.checked) {
+    //     correct++;
+    // } else {
+    //     incorrect++;
+    // };
 
-    if (pitch.checked) {
-        correct++;
-    } else {
-        incorrect++;
-    };
+    // if (pitch.checked) {
+    //     correct++;
+    // } else {
+    //     incorrect++;
+    // };
 
-    if (team.checked) {
-        correct++;
-    } else {
-        incorrect++;
-    };
-
-
+    // if (team.checked) {
+    //     correct++;
+    // } else {
+    //     incorrect++;
+    // };
 
     };
    
@@ -155,6 +162,7 @@
     };
 
     $("#done").on("click", function () {
+        clearTimeout(timerId);
         results();
         console.log(correct);
         console.log(incorrect);
