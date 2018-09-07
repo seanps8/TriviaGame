@@ -20,13 +20,13 @@
                 <input type="radio" class="one" name="option" value="Adam Dunn">Adam Dunn
                 <input type="radio" class="one" name="option" value="Bryce Harper">Bryce Harper
                 <input type="radio" class="one" name="option" value="Anthony Rendon">Anthony Rendon
-                <input type="radio" id="Ryan" name="option" value="Ryan Zimmerman">Ryan Zimmerman
+                <input type="radio" class="one" id="Ryan" name="option" value="Ryan Zimmerman">Ryan Zimmerman
             </form>
         </p>
 
         <p class="question">What is the name of the Nationals mascot?
             <form class="answers">
-                <input type="radio" id="Screech" name="option1" value="Screech">Screech
+                <input type="radio" class="two" id="Screech" name="option1" value="Screech">Screech
                 <input type="radio" class="two" name="option1" value="Slapshot">Slapshot
                 <input type="radio" class="two" name="option1" value="Fanatic">Fanatic
                 <input type="radio" class="two" name="option1" value="Nats">Nats
@@ -37,7 +37,7 @@
             <form class="answers">
                 <input type="radio" class="three" name="option2" value="2015">2015
                 <input type="radio" class="three" name="option2" value="2016">2016
-                <input type="radio" id="2017" name="option2" value="2017">2017
+                <input type="radio" class="three" id="2017" name="option2" value="2017">2017
                 <input type="radio" class="three" name="option2" value="2014">2014
             </form>
         </p>
@@ -45,7 +45,7 @@
         <p class="question">Who is the Nationals General Manager in the front office?
             <form class="answers">
                 <input type="radio" class="four" name="option3" value="Ted Lerner">Ted Lerner
-                <input type="radio" id="Mike" name="option3" value="Mike Rizzo">Mike Rizzo
+                <input type="radio" class="four" id="Mike" name="option3" value="Mike Rizzo">Mike Rizzo
                 <input type="radio" class="four" name="option3" value="John Smith">John Smith
                 <input type="radio" class="four" name="option3" value="Dusty Baker">Dusty Baker
             </form>
@@ -56,13 +56,13 @@
                 <input type="radio" class="five" name="option4" value="Max Scherzer">Max Scherzer
                 <input type="radio" class="five" name="option4" value="Tanner Roark">Tanner Roark
                 <input type="radio" class="five" name="option4" value="Eric Fedde">Eric Fedde
-                <input type="radio" id="Steve" name="option4" value="Stephen Strasburg">Stephen Strasburg
+                <input type="radio" class="five" id="Steve" name="option4" value="Stephen Strasburg">Stephen Strasburg
             </form>
         </p>
 
         <p class="question">Who is the best team in the NL East?
             <form class="answers">
-                <input type="radio" id="Nats" name="option5" value="Nationals">Nationals
+                <input type="radio" class="six" id="Nats" name="option5" value="Nationals">Nationals
                 <input type="radio" class="six" name="option5" value="Braves">Braves
                 <input type="radio" class="six" name="option5" value="Phillies">Phillies
                 <input type="radio" class="six" name="option5" value="Marlins">Marlins
@@ -76,7 +76,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function() { 
-    
+    //add similar function as timeup() except make it a start screen with only a 
+    //header and a start button
+
+    //start button on click event listener that brings user to the original html
 
     var correct = 0;
     var incorrect = 0;
@@ -93,12 +96,12 @@
     var pitch = document.getElementById("Steve");
     var team = document.getElementById("Nats");
 
-    var uno = document.getElementsByClassName("one");
-    var dos = document.getElementsByClassName("two");
-    var tres = document.getElementsByClassName("three");
-    var quatro = document.getElementsByClassName("four");
-    var cinco = document.getElementsByClassName("five");
-    var seis = document.getElementsByClassName("six");
+    // var uno = document.getElementsByClassName("one");
+    // var dos = document.getElementsByClassName("two");
+    // var tres = document.getElementsByClassName("three");
+    // var quatro = document.getElementsByClassName("four");
+    // var cinco = document.getElementsByClassName("five");
+    // var seis = document.getElementsByClassName("six");
     
     function countdown() {
 
@@ -113,46 +116,47 @@
       console.log(timeLeft);
     };
 
+
+//my radio buttons should have each had their own id to add in
+//an else if function for each button checking if they are not checked
+//if not then unanswered++; 
     function results() {
     
-    if (!zim.checked) {
-        if (!uno.checked) {
-            unanswered++;
-        }
-        incorrect++;
-    } else {
+    if (zim.checked) {
         correct++;
+    } else {
+        incorrect++;
+    };
+        
+    if (bird.checked) {
+        correct++;
+    } else {
+        incorrect++;
     };
 
-    // if (bird.checked) {
-    //     correct++;
-    // } else {
-    //     incorrect++;
-    // };
+    if (year.checked) {
+        correct++;
+    } else {
+        incorrect++;
+    };
 
-    // if (year.checked) {
-    //     correct++;
-    // } else {
-    //     incorrect++;
-    // };
+    if (gm.checked) {
+        correct++;
+    } else {
+        incorrect++;
+    };
 
-    // if (gm.checked) {
-    //     correct++;
-    // } else {
-    //     incorrect++;
-    // };
+    if (pitch.checked) {
+        correct++;
+    } else {
+        incorrect++;
+    };
 
-    // if (pitch.checked) {
-    //     correct++;
-    // } else {
-    //     incorrect++;
-    // };
-
-    // if (team.checked) {
-    //     correct++;
-    // } else {
-    //     incorrect++;
-    // };
+    if (team.checked) {
+        correct++;
+    } else {
+        incorrect++;
+    };
 
     };
    
